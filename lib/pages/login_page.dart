@@ -1,4 +1,5 @@
 
+import 'package:fluteter_app_prueba/api/account_api.dart';
 import 'package:fluteter_app_prueba/utils/dialogs.dart';
 import 'package:fluteter_app_prueba/widget/my_btn.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,6 +17,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   FocusNode _focusNodePassword = FocusNode();
+  AccountAPI _accountAPI = AccountAPI();
   GlobalKey<FormState> _formKey = GlobalKey();
 
   String _email = ' ', _password = ' ';
@@ -23,14 +25,24 @@ class _LoginPageState extends State<LoginPage> {
 
   _submit() async {
     final bool isValid = _formKey.currentState.validate();
-    if(isValid && _email == 'matias@gmail.com' && _password == '123456') {
+    if(isValid) {
+      _accountAPI.login(_email, _password);
+      // una llamada a un servicio de rest  para consumir un servicio de autenticacion
+      //SharedPreferences prefs = await SharedPreferences.getInstance();
+      //await prefs.setBool("wasLogin", true);
+      //Navigator.pushReplacementNamed(context, HomePage.routeName);
+    }else{
+      await Dialogs.alert(context, title: "Error", body: "El email o contraseña es incorrecto");
+      print("lalala");
+    }
+    /*if(isValid && _email == 'matias@gmail.com' && _password == '123456') {
       // una llamada a un servicio de rest  para consumir un servicio de autenticacion
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool("wasLogin", true);
       Navigator.pushReplacementNamed(context, HomePage.routeName);
     }else{
       await Dialogs.alert(context, title: "Error", body: "El email o contraseña es incorrecto");
-    }
+    }*/
   }
 
   String _validateEmail(String email){

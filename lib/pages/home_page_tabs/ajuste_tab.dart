@@ -47,6 +47,13 @@ class _AjusteTabState extends State<AjusteTab> {
     Navigator.pushNamedAndRemoveUntil(context, LoginPage.routeName, (_)=>false);
   }
 
+  _setEmail(){
+    Dialogs.intputEmail(context, onOk: (String text){
+      print("input dialog $text");
+    }, label: "Ingrese un email",
+    placeholder: "example@gmail.com");
+  }
+
   @override
   Widget build(BuildContext context) {
     /*print("Ajuste");
@@ -99,7 +106,9 @@ class _AjusteTabState extends State<AjusteTab> {
                 leftIcon: "assets/icons/mail.svg",
                 rightContent: Text("matias@gmail.com", style: TextStyle(color: Colors.blueGrey),), /*SvgPicture.asset("assets/icons/downArrow.svg"),*/
                 label:"Email",
-                onPressed: _confirm,),
+                //onPressed: _confirm,
+                onPressed: _setEmail,
+              ),
               LeftRightIconButton(
                 leftIcon: "assets/icons/security.svg",
                 rightContent: SvgPicture.asset("assets/icons/rightArrow.svg", width: 25,),/*SvgPicture.asset("assets/icons/downArrow.svg"),*/
