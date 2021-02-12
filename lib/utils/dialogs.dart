@@ -170,12 +170,14 @@ class _InputEmailState extends State<InputEmail> {
           ),
           Row(mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            Expanded(child: FlatButton(
+              //FlatButton obsoleto reemplazar por TextButton
+            Expanded(child: TextButton(
                 onPressed: () => Navigator.pop(context),
                 child: Text("Cancelar", style: TextStyle(color: Colors.red),)
             )),
             Expanded(
-              child: FlatButton(onPressed: isValid
+              //FlatButton obsoleto reemplazar por TextButton
+              child: TextButton(onPressed: isValid
                   ?() {
                 Navigator.pop(context);
                 widget.onOk(_email);

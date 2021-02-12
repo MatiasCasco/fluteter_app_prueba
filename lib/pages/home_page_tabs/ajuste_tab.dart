@@ -72,8 +72,11 @@ class _AjusteTabState extends State<AjusteTab> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Avatar(size: 150),
-                      FlatButton(child: Text("UPLOAD"),
+                      TextButton(child: Text("UPLOAD"),
                         onPressed: ()=> print("UPLOADING"),),
+                      /*FlatButton se volvio obsoleto lo remplaza TextButton
+                      FlatButton(child: Text("UPLOAD"),
+                        onPressed: ()=> print("UPLOADING"),),*/
                       /*
                           CupertinoButton(child: Text("SEND"),
                               color: Colors.blue,

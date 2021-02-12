@@ -23,7 +23,9 @@ class _ImagesPageState extends State<ImagesPage> {
 
   File _file;
   pickImage() async {
-    final File file = await ImagePicker.pickImage(source: ImageSource.gallery);
+    final File file = (await ImagePicker().getImage(source: ImageSource.gallery)) as File;
+    //OJo en la version anterior no usaba parentesis el construtor
+    //final File file = await ImagePicker.pickImage(source: ImageSource.gallery);
     // final File file = await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {
       _file = file;
